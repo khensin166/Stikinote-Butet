@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notes for You 💌</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom right, #f8f6f4, #eae6e3);
+      font-family: 'Georgia', serif;
+    }
+
+    .container {
+      text-align: center;
+      position: relative;
+    }
+
+    .envelope {
+      width: 150px;
+      height: 100px;
+      background: #d8cfc4;
+      position: relative;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.6s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .envelope:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 75px solid transparent;
+      border-right: 75px solid transparent;
+      border-bottom: 50px solid #cbbeb0;
+      transition: all 0.6s ease;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+
+    .note {
+      width: 220px;
+      padding: 20px;
+      background: #fff;
+      color: #444;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      transition: all 0.6s ease;
+      opacity: 0;
+    }
+
+    .envelope.open {
+      transform: translateY(30px);
+    }
+
+    .envelope.open:before {
+      transform: rotateX(180deg);
+      transform-origin: top;
+    }
+
+    .note.show {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+
+    .signature {
+      margin-top: 15px;
+      font-style: italic;
+      color: #888;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="envelope" id="envelope"></div>
+    <div class="note" id="note">
+      <p>💌 Stikinote untuk erinn butet pacarnya abang...</p>
+      <p class="signature">– Semangat ya butet UTS nya maaf ya terlambat, abang selalu doain butet biar lancar ujiannya apapun hasilnya yang penting butet udah lakukan yang terbaik, semangat yaa sayangku pokoknya abang selalu support butet, <i>Love You Butett❤️❤️❤️</i> –</p>
+    </div>
+  </div>
+
+  <script>
+    const envelope = document.getElementById('envelope');
+    const note = document.getElementById('note');
+
+    envelope.addEventListener('click', () => {
+      envelope.classList.toggle('open');
+      note.classList.toggle('show');
+    });
+  </script>
+</body>
+</html>
